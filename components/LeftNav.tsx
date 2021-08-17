@@ -4,7 +4,7 @@ import MenuList from '@material-ui/core/MenuList';
 import MenuItem from '@material-ui/core/MenuItem';
 import Paper from '@material-ui/core/Paper';
 
-export const Menu = () => {
+const LeftNav = () => {
   return (
     <Paper>
       <MenuList>
@@ -15,3 +15,5 @@ export const Menu = () => {
     </Paper>
   );
 };
+
+export default LeftNav
