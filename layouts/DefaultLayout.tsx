@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import LeftNav from  '../components/LeftNav'
-import { Grid } from '@material-ui/core';
+import TopNav from  '../components/TopNav'
+import { Container, Grid, Paper } from '@material-ui/core';
 
 interface Props {
   children: object
@@ -8,18 +9,26 @@ interface Props {
 
 const DefaultLayout: FC<Props> = ({ children }) => {
   return (
-    <Grid
-      container
-      spacing={1}
-      direction="row"
-      justifyContent="flex-start"
-      alignItems="flex-start"
-    >
-      <Grid item xs={2}>
-        <LeftNav/>
-      </Grid>
-      { children}
-    </Grid>
+    <>
+      <TopNav/>
+      <Container
+        maxWidth={false}>
+        <Grid
+          container
+          spacing={1}
+          direction="row"
+          justifyContent="flex-start"
+          alignItems="flex-start"
+          >
+          <Grid item xs={2}>
+            <LeftNav/>
+          </Grid>
+          <Grid item xs>
+            { children}
+          </Grid>
+        </Grid>
+      </Container>
+    </>
   );
 }
 
