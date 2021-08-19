@@ -23,12 +23,12 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 
 interface Props {
   artist: {
-    name: string,
-    lastName: string,
-    link: string,
-    subheader: string,
-    description: string,
-    image: string
+    name?: string,
+    lastName?: string,
+    link?: string,
+    subheader?: string,
+    description?: string,
+    image?: string
   }
 }
 
