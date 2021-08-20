@@ -2,7 +2,6 @@ import { useRouter } from 'next/router'
 import ArtistCard from '../../components/ArtistCard'
 import { useGetArtistQuery } from '../../redux/api'
 
-
 const Artist = () => {
   const router = useRouter()
   const { id } = router.query
@@ -11,7 +10,10 @@ const Artist = () => {
   return (
     <>
       { !isLoading &&
-        <ArtistCard key={data.id} artist={data}/>
+        <>
+          <p>Post: {id}</p>
+          <ArtistCard artist={data}/>
+        </>
       }
     </>
   )

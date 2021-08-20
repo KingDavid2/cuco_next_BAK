@@ -10,8 +10,9 @@ import ShareIcon from '@material-ui/icons/Share';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import { Artist } from '../types/api'
+import CloseIcon from '@material-ui/icons/Close';
 import { IArtist } from '../types/api'
+import { useDeleteArtistMutation } from '../redux/api'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   media: {
@@ -30,6 +31,7 @@ interface Props {
 
 const ArtistCard: FC<Props> = ({ artist }) => {
   const {id, name, lastName, subheader, description, image, link } = artist
+  const [deleteArtist, { isLoading: isDeleting }] = useDeleteArtistMutation()
 
   const initials = () => {
     let i = ''
@@ -64,6 +66,11 @@ const ArtistCard: FC<Props> = ({ artist }) => {
             </IconButton>
             <IconButton aria-label="share">
               <ShareIcon />
+            </IconButton>
+            <IconButton 
+              onClick={() => deleteArtist(id)}
+              aria-label="delete">
+              <CloseIcon />
             </IconButton>
           </>
         }
