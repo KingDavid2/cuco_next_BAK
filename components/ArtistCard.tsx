@@ -1,6 +1,7 @@
 import React, { FC, useState, PropsWithChildren } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Paper';
+import Link from '@material-ui/core/Link';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -27,7 +28,7 @@ interface Props {
 }
 
 const ArtistCard: FC<Props> = ({ artist }) => {
-  const {name, lastName, subheader, description, image, link } = artist
+  const {id, name, lastName, subheader, description, image, link } = artist
 
   const initials = () => {
     let i = ''
@@ -65,7 +66,11 @@ const ArtistCard: FC<Props> = ({ artist }) => {
             </IconButton>
           </>
         }
-        title={name + " " + lastName }
+        title={
+          <Link href={`/artists/${id}`}>
+            {name + " " + lastName}
+          </Link>
+          }
         subheader={subheader}
       />
       <CardMedia

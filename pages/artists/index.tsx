@@ -2,11 +2,11 @@ import {useState} from "react"
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Grid } from '@material-ui/core';
-import ArtistCard from '../components/ArtistCard'
-import { useGetArtistsQuery } from '../redux/api'
-import { Artist } from '../types/api'
+import ArtistCard from '../../components/ArtistCard'
+import { useGetArtistsQuery } from '../../redux/api'
+import { Artist } from '../../types/api'
 
-const Home: NextPage = () => {
+const Artists: NextPage = () => {
   const { data, error, isLoading } = useGetArtistsQuery(null)
   return (
     <>
@@ -34,4 +34,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default Artists

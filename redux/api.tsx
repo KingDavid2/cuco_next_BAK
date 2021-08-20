@@ -25,11 +25,14 @@ export const cucoApi = createApi({
   }),
   endpoints: (builder) => ({
     getArtists: builder.query({
-      query: () => '/artists'
+      query: () => 'artists'
+    }),
+    getArtist: builder.query({
+      query: (id) => `artists/${id}`,
     }),
   }),
 })
 
 // Export hooks for usage in function components, which are
 // auto-generated based on the defined endpoints
-export const { useGetArtistsQuery } = cucoApi
+export const { useGetArtistsQuery, useGetArtistQuery } = cucoApi
