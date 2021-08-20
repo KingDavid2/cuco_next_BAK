@@ -9,6 +9,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { Artist } from '../types/api'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   media: {
@@ -22,14 +23,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 );
 
 interface Props {
-  artist: {
-    name?: string,
-    lastName?: string,
-    link?: string,
-    subheader?: string,
-    description?: string,
-    image?: string
-  }
+  artist: Artist
 }
 
 const ArtistCard: FC<Props> = ({ artist }) => {

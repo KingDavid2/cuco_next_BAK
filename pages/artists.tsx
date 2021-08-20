@@ -4,6 +4,7 @@ import Head from 'next/head'
 import { Grid } from '@material-ui/core';
 import ArtistCard from '../components/ArtistCard'
 import { useGetArtistsQuery } from '../redux/api'
+import { Artist } from '../types/api'
 
 const Home: NextPage = () => {
   const { data, error, isLoading } = useGetArtistsQuery(null)
@@ -21,7 +22,7 @@ const Home: NextPage = () => {
         justifyContent="flex-start"
         alignItems="flex-start"
         >
-        {!isLoading && data.map(item => { 
+        {!isLoading && data.map((item: Artist) => { 
           return (
             <Grid item xs>
               <ArtistCard key={item.id} artist={item}/>
