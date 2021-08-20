@@ -24,8 +24,8 @@ const Artists: NextPage = () => {
         >
         {!isLoading && data.map((item: IArtist) => { 
           return (
-            <Grid item xs>
-              <ArtistCard key={item.id} artist={item}/>
+            <Grid item xs key={item.id}>
+              <ArtistCard artist={item}/>
             </Grid>
           )
         })}
