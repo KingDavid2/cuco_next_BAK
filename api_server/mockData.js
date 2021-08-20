@@ -1,8 +1,8 @@
-const uuid = require("uuid");
+const { v4: uuidv4 } = require('uuid');
 
 const artists = [
   {
-    id: uuid.v1(),
+    id: uuidv4(),
     name: 'Pablo',
     lastName: 'Picasso',
     link: '/',
@@ -11,7 +11,7 @@ const artists = [
     image: 'https://pablo-picasso.space/wp-content/uploads/2019/07/pablo-picasso-facts-thumbnail-2.jpg'
   },
   {
-    id: uuid.v1(),
+    id: uuidv4(),
     name: 'Pablo',
     lastName: 'Picasso',
     link: '/',
@@ -20,7 +20,7 @@ const artists = [
     image: 'https://pablo-picasso.space/wp-content/uploads/2019/07/pablo-picasso-facts-thumbnail-2.jpg'
   },
   {
-    id: uuid.v1(),
+    id: uuidv4(),
     name: 'Pablo',
     lastName: 'Picasso',
     link: '/',
@@ -29,7 +29,7 @@ const artists = [
     image: 'https://pablo-picasso.space/wp-content/uploads/2019/07/pablo-picasso-facts-thumbnail-2.jpg'
   },
   {
-    id: uuid.v1(),
+    id: uuidv4(),
     name: 'Pablo', lastName: 'Picasso',
     link: '/',
     subheader: 'Some description',
@@ -37,7 +37,7 @@ const artists = [
     image: 'https://pablo-picasso.space/wp-content/uploads/2019/07/pablo-picasso-facts-thumbnail-2.jpg'
   },
   {
-    id: uuid.v1(),
+    id: uuidv4(),
     name: 'Pablo',
     lastName: 'Picasso',
     link: '/',
@@ -46,7 +46,7 @@ const artists = [
     image: 'https://pablo-picasso.space/wp-content/uploads/2019/07/pablo-picasso-facts-thumbnail-2.jpg'
   },
   {
-    id: uuid.v1(),
+    id: uuidv4(),
     name: 'Pablo',
     lastName: 'Picasso',
     link: '/',
@@ -55,7 +55,7 @@ const artists = [
     image: 'https://pablo-picasso.space/wp-content/uploads/2019/07/pablo-picasso-facts-thumbnail-2.jpg'
   },
   {
-    id: uuid.v1(),
+    id: uuidv4(),
     name: 'Pablo',
     lastName: 'Picasso',
     link: '/',
