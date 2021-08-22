@@ -1,14 +1,7 @@
 // Need to use the React-specific entry point to allow generating React hooks
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { IArtist } from '../types/api'
 
-interface Artist {
-  name?: string,
-  lastName?: string,
-  link?: string,
-  subheader?: string,
-  description?: string,
-  image?: string
-}
 // Define a service using a base URL and expected endpoints
 export const cucoApi = createApi({
   reducerPath: 'cucoApi',
@@ -34,8 +27,26 @@ export const cucoApi = createApi({
             ]
           : [{ type: 'Artist', id: 'LIST' }],
     }),
-    getArtist: builder.query<Artist, string>({
+    getArtist: builder.query<IArtist, string>({
       query: (id) => `artists/${id}`,
+    }),
+    createArtist: builder.mutation<IArtist, Partial<IArtist>>({
+      query: (body) => ({
+        url: `artists`,
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: [{ type: 'Artist', id: 'LIST' }],
+    }),
+    updateArtist: builder.mutation<IArtist, Partial<IArtist>>({
+      query: (data) => {
+        const { id, ...patch } = data
+        return {
+        url: `artists/${id}`,
+        method: 'PUT',
+        body: patch,
+      }},
+      invalidatesTags: (result, error, { id }) => [{ type: 'Artist', id }],
     }),
     deleteArtist: builder.mutation<{ success: boolean; id: string }, string>({
       query: (id) => {
@@ -51,4 +62,10 @@ export const cucoApi = createApi({
 
 // Export hooks for usage in function components, which are
 // auto-generated based on the defined endpoints
-export const { useGetArtistsQuery, useGetArtistQuery, useDeleteArtistMutation } = cucoApi
+export const {
+  useGetArtistsQuery,
+  useGetArtistQuery,
+  useCreateArtistMutation,
+  useUpdateArtistMutation,
+  useDeleteArtistMutation
+} = cucoApi
