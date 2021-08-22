@@ -1,4 +1,5 @@
 // Need to use the React-specific entry point to allow generating React hooks
+import { FC } from 'react';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IArtist } from '../types/api'
 

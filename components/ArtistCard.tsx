@@ -1,4 +1,4 @@
-import React, { FC, useState, PropsWithChildren } from 'react';
+import React, { FC } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
@@ -31,7 +31,7 @@ interface Props {
 
 const ArtistCard: FC<Props> = ({ artist }) => {
   const {id, name, lastName, subheader, description, image, link } = artist
-  const [deleteArtist, { isLoading: isDeleting }] = useDeleteArtistMutation()
+  const [deleteArtist, { isLoading }] = useDeleteArtistMutation()
 
   const initials = () => {
     let i = ''
@@ -68,7 +68,7 @@ const ArtistCard: FC<Props> = ({ artist }) => {
               <ShareIcon />
             </IconButton>
             <IconButton 
-              onClick={() => deleteArtist(id)}
+              onClick={() => deleteArtist(id!)}
               aria-label="delete">
               <CloseIcon />
             </IconButton>

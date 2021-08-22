@@ -6,7 +6,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { useCreateArtistMutation, useUpdateArtistMutation } from '../redux/api'
 
 interface Props {
-  artist: IArtist
+  artist?: IArtist
 }
 
 const ArtistForm: FC<Props> = ({ artist }) => {
