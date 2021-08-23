@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import LeftNav from  '../components/LeftNav'
-import TopNav from  '../components/TopNav'
+import LeftNav from  '../components/navs/LeftNav'
+import TopNav from  '../components/navs/TopNav'
 import { Container, Grid, Paper } from '@material-ui/core';
 
 interface Props {

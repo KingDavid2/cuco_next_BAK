@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import ArtistFrom from '../../../components/ArtistFrom'
+import ArtistFrom from '../../../components/artists/ArtistFrom'
 
 import { useGetArtistQuery } from '../../../redux/api'
 

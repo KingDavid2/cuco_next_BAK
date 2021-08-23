@@ -11,8 +11,8 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
-import { IArtist } from '../types/api'
-import { useDeleteArtistMutation } from '../redux/api'
+import { IArtist } from '../../types/api'
+import { useDeleteArtistMutation } from '../../redux/api'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   media: {

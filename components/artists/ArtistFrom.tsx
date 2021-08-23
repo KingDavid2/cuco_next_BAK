@@ -1,9 +1,9 @@
 import React, { FC, useEffect } from 'react';
-import { IArtist } from '../types/api'
-import TextFieldHook from './form-components/TextFieldHook'
+import { IArtist } from '../../types/api'
+import TextFieldHook from '../form-components/TextFieldHook'
 import { Button, Grid } from '@material-ui/core';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { useCreateArtistMutation, useUpdateArtistMutation } from '../redux/api'
+import { useCreateArtistMutation, useUpdateArtistMutation } from '../../redux/api'
 
 interface Props {
   artist?: IArtist

@@ -1,8 +1,7 @@
-import {useState} from "react"
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Grid } from '@material-ui/core';
-import ArtistCard from '../../components/ArtistCard'
+import ArtistCard from '../../components/artists/ArtistCard'
 import { useGetArtistsQuery } from '../../redux/api'
 import { IArtist } from '../../types/api'
 

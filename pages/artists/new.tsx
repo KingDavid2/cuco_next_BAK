@@ -1,4 +1,4 @@
-import ArtistFrom from '../../components/ArtistFrom'
+import ArtistFrom from '../../components/artists/ArtistFrom'
 
 const Artist = () => {
   return (
