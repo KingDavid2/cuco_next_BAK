@@ -1,12 +1,10 @@
-// Need to use the React-specific entry point to allow generating React hooks
-import { FC } from 'react';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { IArtist } from '../types/api'
+import { IArtist, IArtwork } from '../types/api'
 
 // Define a service using a base URL and expected endpoints
 export const cucoApi = createApi({
   reducerPath: 'cucoApi',
-  tagTypes: ['Artist'],
+  tagTypes: ['Artist', 'Artwork'],
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.API_BASE_URL,
     // prepareHeaders: (headers) => {
@@ -58,6 +56,49 @@ export const cucoApi = createApi({
       },
       invalidatesTags: (result, error, id) => [{ type: 'Artist', id }],
     }),
+
+// ------------------------------------------- //
+
+    getArtworks: builder.query({
+      query: () => 'artworks',
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.map(({ id }) => ({ type: 'Artwork' as const, id })),
+              { type: 'Artwork', id: 'LIST' },
+            ]
+          : [{ type: 'Artwork', id: 'LIST' }],
+    }),
+    getArtwork: builder.query<IArtwork, string>({
+      query: (id) => `artworks/${id}`,
+    }),
+    createArtwork: builder.mutation<IArtwork, Partial<IArtwork>>({
+      query: (body) => ({
+        url: `artworks`,
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: [{ type: 'Artwork', id: 'LIST' }],
+    }),
+    updateArtwork: builder.mutation<IArtwork, Partial<IArtwork>>({
+      query: (data) => {
+        const { id, ...patch } = data
+        return {
+        url: `artworks/${id}`,
+        method: 'PUT',
+        body: patch,
+      }},
+      invalidatesTags: (result, error, { id }) => [{ type: 'Artwork', id }],
+    }),
+    deleteArtwork: builder.mutation<{ success: boolean; id: string }, string>({
+      query: (id) => {
+        return {
+          url: `artworks/${id}`,
+          method: 'DELETE',
+        }
+      },
+      invalidatesTags: (result, error, id) => [{ type: 'Artwork', id }],
+    }),
   }),
 })
 
@@ -68,5 +109,10 @@ export const {
   useGetArtistQuery,
   useCreateArtistMutation,
   useUpdateArtistMutation,
-  useDeleteArtistMutation
+  useDeleteArtistMutation,
+  useGetArtworksQuery,
+  useGetArtworkQuery,
+  useCreateArtworkMutation,
+  useUpdateArtworkMutation,
+  useDeleteArtworkMutation
 } = cucoApi
