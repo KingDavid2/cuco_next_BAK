@@ -1,12 +1,21 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { Grid } from '@material-ui/core';
+import { createStyles, Grid, makeStyles, Theme } from '@material-ui/core';
 import ArtworkCard from '../../components/artworks/ArtworkCard'
 import { useGetArtworksQuery } from '../../redux/api'
 import { IArtwork } from '../../types/api'
 
+const useStyles = makeStyles((theme: Theme) => createStyles({
+  root: {
+    minWidth: '25%'
+  },
+}),
+);
+
 const Artworks: NextPage = () => {
   const { data, error, isLoading } = useGetArtworksQuery(null)
+  const classes = useStyles();
+
   return (
     <>
       <Head>
@@ -19,11 +28,10 @@ const Artworks: NextPage = () => {
         spacing={1}
         direction="row"
         justifyContent="flex-start"
-        alignItems="flex-start"
-        >
+        alignItems="flex-start">
         {!isLoading && data.map((item: IArtwork) => { 
           return (
-            <Grid item xs key={item.id}>
+            <Grid item xs key={item.id} className={classes.root}>
               <ArtworkCard artwork={item}/>
             </Grid>
           )
